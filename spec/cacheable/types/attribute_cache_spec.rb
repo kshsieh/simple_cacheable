@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Cacheable do
   let(:cache) { Rails.cache }
   let(:user)  { User.create(:login => 'flyerhzm') }
+
   let(:descendant) { Descendant.create(:login => "scotterc")}
 
   before :all do
@@ -66,7 +67,6 @@ describe Cacheable do
     end
   end
 
-<<<<<<< Updated upstream
   context "descendant" do
     it "should not cache Descendant.find_by_login" do
       Rails.cache.read("descendants/attribute/login/scotterc").should be_nil
@@ -93,11 +93,4 @@ describe Cacheable do
       Rails.cache.read("descendants/#{descendant.id}/method/name").should == descendant.name
     end
   end
-
-=======
-end
-
-# dummy class to test STI
-class Descendant < User
->>>>>>> Stashed changes
 end
