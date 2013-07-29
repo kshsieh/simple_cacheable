@@ -73,9 +73,9 @@ module Cacheable
               after_commit "expire_#{association_name}_cache".to_sym
 
               define_method "expire_#{association_name}_cache" do
-                if respond_to? "cached_#{reverse_association.name}".to_sym
+                if respond_to?("cached_#{reverse_association.name}".to_sym) && send("cached_#{reverse_association.name}") != nil
                   send("cached_#{reverse_association.name}").expire_association_cache(association_name)
-                else
+                elsif send("#{reverse_association.name}") != nil
                   send("#{reverse_association.name}").expire_association_cache(association_name)
                 end
               end
@@ -90,6 +90,5 @@ module Cacheable
         end
       end
     end
-
   end
 end

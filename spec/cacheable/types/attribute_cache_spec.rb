@@ -55,10 +55,18 @@ describe Cacheable do
         Post.find_cached_all_by_user_id(user.id)
         Post.find_cached_all_by_user_id(user.id).should == [@post1, @post2]
       end
-
     end
   end
 
+  context "single table inheritance bug" do
+    context "descendant" do
+      it "should have cached indices hash" do
+        Descendant.cached_indices.should_not be_nil
+      end
+    end
+  end
+
+<<<<<<< Updated upstream
   context "descendant" do
     it "should not cache Descendant.find_by_login" do
       Rails.cache.read("descendants/attribute/login/scotterc").should be_nil
@@ -86,4 +94,10 @@ describe Cacheable do
     end
   end
 
+=======
+end
+
+# dummy class to test STI
+class Descendant < User
+>>>>>>> Stashed changes
 end

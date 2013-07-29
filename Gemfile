@@ -6,6 +6,7 @@ gemspec
 platforms :ruby do
   gem "sqlite3"
   gem "memcached"
+  gem 'byebug'
 end
 
 platforms :jruby do

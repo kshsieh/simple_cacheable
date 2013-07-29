@@ -7,6 +7,7 @@ require 'rspec'
 require 'mocha/api'
 require 'memcached'
 require 'cacheable'
+require 'byebug'
 
 # It needs this order otherwise cacheable throws
 # errors when looking for reflection classes

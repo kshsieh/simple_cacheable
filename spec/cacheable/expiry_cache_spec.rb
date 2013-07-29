@@ -76,7 +76,6 @@ describe Cacheable do
       user.expire_model_cache
       Rails.cache.read("users/#{user.id}/association/images").should be_nil
     end
-
   end
 
   context "single table inheritance bug" do
@@ -163,5 +162,4 @@ describe Cacheable do
       end
     end
   end
-
 end
